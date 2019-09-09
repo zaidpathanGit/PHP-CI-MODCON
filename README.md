@@ -11,8 +11,15 @@
 * `PHP CodeIgnitor` framework setup in your system. Or you can download 
  it from here [Download CodeIgnitor](https://codeigniter.com/download).
 * Basics of working with `Controllers` and `Models` in `PHP CodeIgnitor`.
-* SQL database.
+* SQL database (Database tables should contain first field as primary key to use this library).
 
+```
+E.g
+employee(empid, empname, deptid) //Right
+student(studentid, studentname, deptid) //Right
+employee(empname, empid, deptid) //Wrong
+student(studentname, studentid, deptid) //Wrong
+```
 
 ## Configuration table
 
