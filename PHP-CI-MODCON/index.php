@@ -28,7 +28,7 @@ $fieldList = $obj->getTableFields($tableList[1]); //Table name on $tableList[1] 
 /**
  * Make an object of controllerGenerator class to access its methods.
  */
-$obj1 = new controllerGenerator();
+$obj1 = new ControllerGenerator();
 
 /**
  * Call the methods to generate single model or to generate 
