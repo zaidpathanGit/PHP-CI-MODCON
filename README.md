@@ -8,7 +8,7 @@
 ## Pre-Requirements
 
 * Should know basics programming of PHP and OOP.
-* `PHP CodeIgnitor` framework in your system. Or you can download 
+* `PHP CodeIgnitor` framework setup in your system. Or you can download 
  it from here [Download CodeIgnitor](https://codeigniter.com/download).
 * Basics of working with `Controllers` and `Models` in `PHP CodeIgnitor`.
 * SQL database.
@@ -18,7 +18,7 @@
 
 * The configuration table represents the avaiable methods inside the library as well as how to use those methods.
 
-| ClassName | MethodName | Parameter | Response |
+| ClassName | MethodName | Parameters | Response |
 |-----------|------------|-----------|----------|
 | databaseConfigure | constructor() | constructor('hostname','username','password','dbname') | True/False |
 | databaseConfigure | getAllTables() | No parameters | Collection |
@@ -101,7 +101,7 @@ Step 5. Once the execution is completed it will display the directory status abo
 
 Step 6. Open your CodeIgnitor project and navigate to the `application` folder.
 
-Step 7. Copy the files from `ControllerGenerated` folder and paste it into the `application\controller` folder. Now copy the corresponding models of the controllers from `ModelGenerated ` folder and paste it into `application\models` folder.
+Step 7. Copy the files from `ControllerGenerated` folder and paste it into the `application\controller` folder. Now copy the corresponding models of the controllers from `ModelGenerated` folder and paste it into `application\models` folder.
 
 > Note: It may possible that you have only generated models or only controllers 
 so in that case you can skip some instructions from step 7.
@@ -116,10 +116,13 @@ of the controllers  have a look onto the following table.
 |localhost://projectName/controllerName/update | Table fields via html form | POST | True/False | Plain text |
 |localhost://projectName/controllerName/delete | Table primary key field via html form | POST | True/False | Plain text |
 
+
 >Note : Form parameter should be same as table fields names inside your database table. 
 
 ```HTML
-<!--E.g : If table format is like this =>  employee(empid, empname, deptid) then form input element name attribute should also like empid, empname, deptid same as table fields name.-->
+<!--E.g : If table format is like this =>  employee(empid, empname, deptid) 
+then form input element name attribute should also like empid, empname, deptid 
+same as table fields name.-->
 
 <form>
     <input type="hiddenfield" name="empid"/>
@@ -128,10 +131,10 @@ of the controllers  have a look onto the following table.
     ---
 </form>
 ```
+
 Step 9. Finish.
 
 
 ### Conclusion
 
-Thats all from my side still if you find anything which makes my repository works more better then feel free to tell me. you can also contact on `zaidpathan339@gmail.com` Thank you :)
-
+Thats all from my side still if you find anything which makes my repository works more better then feel free to tell me. you can also contact on `zaidpathan339@gmail.com` Thank you :smiley:
