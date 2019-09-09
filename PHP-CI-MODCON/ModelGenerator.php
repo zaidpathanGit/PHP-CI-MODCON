@@ -208,7 +208,7 @@ class ModelGenerator
                  * Code to create file with file name as table to generate model name for file.
                  * ucfirst is used to capital the first character of the table name.
                  */
-                $file = fopen("./ModelGenerated/".ucfirst($tableName).".php", "w");
+                $file = fopen("./ModelGenerated/".ucfirst($tableName)."Model.php", "w");
 
                 /**
                  * Code to copy the content from the ModelSample file file and write it into newly created file
