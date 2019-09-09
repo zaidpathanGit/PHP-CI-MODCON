@@ -1,0 +1,83 @@
+<?php
+/**
+ * Code to generate class.
+ */
+class *ControllerName* extends CI_Controller
+{
+   /**
+    * Code to generate constructor.
+    */
+   public function __construct() {
+    
+      /**
+       * Code to load database when the constructor is called.
+       */
+      parent::__construct(); 
+      $this->load->model('*ModelName*');         
+   }
+  
+  /**
+    * Method to display all data from table
+    */
+   public function index()
+   {
+   
+      /**
+       * Code to call method from *ModelName* model
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*(); 
+   }
+
+   /**
+    * Method to perform insert operation.
+    */
+   public function insert()
+   {  
+      /**
+       * Code to retrieve values from form or querystring
+       */
+
+      *InsertPostParameter*   
+
+      /**
+       * Code to call method from *ModelName* model
+       */
+      echo $this->*ModelName*->insertInto*ControllerName*(*InsertParameter*);
+   }
+
+   /**
+    * Method to perform update operation.
+    */
+   public function update()
+   {
+      /**
+       * Code to retrieve values from form or querystring
+       */
+
+      *UpdatePostParameter*
+
+      /**
+       * Code to call method from *ModelName* model
+       */
+      echo $this->*ModelName*->updateInto*ControllerName*(*UpdateParameter*);
+   }
+
+   /**
+    * Method to perform delete operation.
+    */
+   public function delete()
+   {
+      /**
+       * Code to retrieve values from form or querystring
+       */
+
+      *DeletePostParameter*
+
+      /**
+       * Code to call method from *ModelName* model
+       */
+       echo $this->*ModelName*->deleteInto*ControllerName*(*DeleteParameter*);
+   }
+}
+
+?>

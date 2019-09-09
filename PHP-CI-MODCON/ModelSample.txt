@@ -1,0 +1,54 @@
+<?php
+/**
+ * Code to generate class.
+ */
+class *ModelName* extends CI_Model
+{
+   /**
+    * Code to generate constructor.
+    */
+   public function __construct() {
+    
+      /**
+       * Code to load database when the constructor is called.
+       */
+      parent::__construct(); 
+      $this->load->database();         
+   }
+  
+   /**
+    * Method to perform insert operation.
+    */
+   public function insertInto*MethodName*(*InsertParameter*)
+   {
+        return json_encode($this->db->insert('*QueryName*', Array(*InsertArrayParameter*));
+   }
+
+   /**
+    * Method to perform update operation.
+    */
+   public function updateInto*MethodName*(*UpdateParameter*)
+   {
+        $this->db->where('*PrimaryKey*',*DeleteParameter*);
+        return json_encode($this->db->update('*QueryName*', Array(*UpdateArrayParameter*));
+   }
+
+   /**
+    * Method to perform delete operation.
+    */
+   public function deleteInto*MethodName*(*DeleteParameter*)
+   {
+        $this->db->where('*PrimaryKey*',*DeleteParameter*);
+        return json_encode($this->db->delete('*QueryName*'));
+   }
+
+   /**
+    * Method to display all data from table
+    */
+   public function showAllDataFrom*MethodName*()
+   {
+       return json_encode($this->db->get('*QueryName*')->result_array());
+   }
+}
+
+?>
