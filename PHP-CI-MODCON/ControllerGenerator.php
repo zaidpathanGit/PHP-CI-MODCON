@@ -140,14 +140,7 @@ class ControllerGenerator
             /**
              * Code to display content from ControllerGenerated directory
              */
-            echo "The followin files are created in ControllerGenerated folder : (Click to download)<hr>";
-            $files = scandir("./ControllerGenerated");
-            
-            foreach($files as $f)
-            {
-                echo "<a href='./ControllerGenerated/".$f."' download> ".$f." </a> <br>";
-            }
-            
+            $this->directoryContent();
         }
         else
         {
@@ -240,7 +233,7 @@ class ControllerGenerator
                      */
 
                     fwrite($file, str_replace("*ControllerName*", ucfirst($tableName), 
-                                  str_replace("*ModelName*", ucfirst($tableName)."",
+                                  str_replace("*ModelName*", ucfirst($tableName)."Model",
                                   str_replace("*InsertParameter*", $insertParameter."",
                                   str_replace("*UpdateParameter*", $updateParameter."",
                                   str_replace("*DeleteParameter*", "$".$fieldList[1]."",
@@ -266,17 +259,25 @@ class ControllerGenerator
             /**
              * Code to display content from ControllerGenerated directory
              */
-            echo "The followin files are created in ControllerGenerated folder : (Click to download)<hr>";
-            $files = scandir("./ControllerGenerated");
-            
-            foreach($files as $f)
-            {
-                echo "<a href='./ControllerGenerated/".$f."' download> ".$f." </a> <br>";
-            }
+            $this->directoryContent();
         }
         else
         {
             exit("Execution is stopped due to the database connection error.!");
+        }
+    }
+
+    public function directoryContent()
+    {
+        /**
+         * Code to display content from ControllerGenerated directory
+         */
+        echo "<hr>The followin files are created in ControllerGenerated folder : (Click to download)<hr>";
+        $files = scandir("./ControllerGenerated");
+        
+        foreach($files as $f)
+        {
+            echo "<a href='./ControllerGenerated/".$f."' download> ".$f." </a> <br>";
         }
     }
 }

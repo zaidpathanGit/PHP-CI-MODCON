@@ -130,13 +130,7 @@ class ModelGenerator
             /**
              * Code to display content from ControllerGenerated directory
              */
-            echo "The followin files are created in ModelGenerated folder: (Click to download)<hr>";
-            $files = scandir("./ModelGenerated");
-            
-            foreach($files as $f)
-            {
-                echo "<a href='./ModelGenerated/".$f."' _download> ".$f." </a> <br>";
-            }
+            $this->directoryContent();
             
         }
         else
@@ -252,20 +246,28 @@ class ModelGenerator
                  */
                 fclose($file);
             
-            /**
-             * Code to display content from ControllerGenerated directory
-             */
-            echo "The followin files are created in ModelGenerated folder: (Click to download)<hr>";
-            $files = scandir("./ModelGenerated");
-            
-            foreach($files as $f)
-            {
-                echo "<a href='./ModelGenerated/".$f."' _download> ".$f." </a> <br>";
-            }            
+                /**
+                 * Code to display content from ControllerGenerated directory
+                 */
+                $this->directoryContent();    
         }
         else
         {
             exit("Execution is stopped due to the database connection error.!");
+        }
+    }
+
+    public function directoryContent()
+    {
+        /**
+         * Code to display content from ControllerGenerated directory
+         */
+        echo "<hr>The followin files are created in ModelGenerated folder : (Click to download)<hr>";
+        $files = scandir("./ModelGenerated");
+        
+        foreach($files as $f)
+        {
+            echo "<a href='./ModelGenerated/".$f."' download> ".$f." </a> <br>";
         }
     }
 }
