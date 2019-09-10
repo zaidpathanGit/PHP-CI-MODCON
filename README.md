@@ -32,8 +32,11 @@ student(studentname, studentid, deptid) //Wrong
 | databaseConfigure | getTableFields() | getTableFields('tableName') | Collection |
 | ModelGenerator | generateSingleModel() | generateSingleModel('tableName') | File |
 | ModelGenerator | generateModel() | generateModel(Collection)  `Collection from getAllTables()` | File |
+| ModelGenerator | directoryContent() | No parameters | List of files and directory |
 | ControllerGenerator | generateSingleController() | generateSingleController('tableName') | File |
 | ControllerGenerator | generateController() | generateController(Collection) `Collection from getAllTables()` | File |
+| ControllerGenerator | directoryContent() | No parameters | List of files and directory |
+
 
 
 ## How to use ??
@@ -116,12 +119,25 @@ so in that case you can skip some instructions from step 7.
 Step 8. Now it's time for testing.!! So for test the CRUD functionality 
 of the controllers  have a look onto the following table.
 
-| Request URL | Parameters | Method Required | Response | Type |
-------|------------|--------|----------|------|
-|localhost://projectName/controllerName/ | No parameters | POST | Table records in json collection | JSON |
-|localhost://projectName/controllerName/create | Table fields via html form | POST | True/False | Plain text |
-|localhost://projectName/controllerName/update | Table fields via html form | POST | True/False | Plain text |
-|localhost://projectName/controllerName/delete | Table primary key field via html form | POST | True/False | Plain text |
+| Request URL | Parameters | Form Method | Form Parameter Name | Response | Type |
+|-------------|------------|-------------|---------------------|----------|------|
+|localhost://projectName/controllerName/ | No parameters | GET/POST | - | Table records in json | JSON |
+|localhost://projectName/controllerName/create | Table fields via html form | POST | fieldName=value | True and total affected rows in json | JSON |
+|localhost://projectName/controllerName/update | Table fields via html form | POST | fieldName=value | True and total affected rows in json | JSON |
+|localhost://projectName/controllerName/delete | Table primary key field via html form | POST | fieldName=value | True/False and affected rows in json | JSON |
+|localhost://projectName/controllerName/limit  | Start and end value via html form | POST | start=value&end=value | Table records in json | JSON |
+|localhost://projectName/controllerName/select  | Comma(,) seperated field names via html form | POST | fields=field1,field2 | Table records in json | JSON |
+|localhost://projectName/controllerName/selectLimit  | Comma(,) seperated field names with Start and end value via html form  | POST | fields=field1,field2&start=value&end=value | Table records in json | JSON |
+|localhost://projectName/controllerName/max | Field name via html form | POST | field=fieldname | Table records in json | JSON |
+|localhost://projectName/controllerName/min | Field name via html form | POST | field=fieldname | Table records in json | JSON |
+|localhost://projectName/controllerName/avg | Field name via html form | POST | field=fieldname | Table records in json | JSON |
+|localhost://projectName/controllerName/sum | Field name via html form | POST | field=fieldname | Table records in json | JSON |
+|localhost://projectName/controllerName/search | Field name and value in the following format via form | POST | condition?field1=value, field2=value | Table records in json | JSON |
+|localhost://projectName/controllerName/searchLike | Field name and value in the following format via form | POST | condition?field1=value,field2=value | Table records in json | JSON |
+|localhost://projectName/controllerName/searchNLike  | Field name and value in the following format via form: condition?field1=value, field2=value | POST | condition?field1=value,field2=value | Table records in json | JSON |
+|localhost://projectName/controllerName/groupBy | Field name via html form | POST | fields=field1,field2 | Table records in json | JSON |
+|localhost://projectName/controllerName/orderBy | Field name via html form | POST | fields=field1,field2 | Table records in json | JSON |
+|localhost://projectName/controllerName/distinct | No parameters | GET/POST | - | Table records in json | JSON |
 
 
 >Note : Form parameter should be same as table fields names inside your database table. 
