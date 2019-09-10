@@ -1,0 +1,329 @@
+<?php
+/**
+ * Code to generate class.
+ */
+class *ControllerName* extends CI_Controller
+{
+   /**
+    * Code to generate constructor.
+    */
+   public function __construct() {
+    
+      /**
+       * Code to load database when the constructor is called.
+       */
+      parent::__construct(); 
+      $this->load->model('*ModelName*');         
+   }
+  
+  /**
+    * Method to display all data from table.
+    */
+   public function index()
+   {
+   
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*(); 
+   }
+
+   /**
+    * Method to perform insert operation.
+    */
+   public function insert()
+   {  
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      *InsertPostParameter*   
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->insertInto*ControllerName*(*InsertParameter*);
+   }
+
+   /**
+    * Method to perform update operation.
+    */
+   public function update()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      *UpdatePostParameter*
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->updateInto*ControllerName*(*UpdateParameter*);
+   }
+
+   /**
+    * Method to perform delete operation.
+    */
+   public function delete()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      *DeletePostParameter*
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+       echo $this->*ModelName*->deleteInto*ControllerName*(*DeleteParameter*);
+   }
+
+   /**
+   * Method to display all data from table with limit functionality.
+   */
+   public function limit()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $start = $_POST['start']; $end = $_POST['end'];
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*Limit($start, $end);
+   }
+
+   /**
+   * Method to display all data from table with selected fields.
+   */
+   public function select()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $fields = explode(',',$_POST['fields']);
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*Select($fields);
+   }
+
+   /**
+   * Method to display all data from table with selected fields and limit specified.
+   */
+   public function selectLimit()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $fields = explode(',',$_POST['fields']); $start = $_POST['start']; $end = $_POST['end'];
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*SelectLimit($fields, $start, $end);
+   }
+
+   /**
+   * Method to display maximum value of field from table.
+   */
+   public function max()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $field = $_POST['field'];
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*Max($field);
+   }
+
+   /**
+   * Method to display minimum value of field from table.
+   */
+   public function min()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $field = $_POST['field'];
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*Min($field);
+   }
+
+   /**
+   * Method to display average value of field from table.
+   */
+   public function avg()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $field = $_POST['field'];
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*Avg($field);
+   }
+
+   /**
+   * Method to display sum value of field from table.
+   */
+   public function sum()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $field = $_POST['field'];
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*Sum($field);
+   }
+
+   /**
+   * Method to display data from table with specified where clause.
+   */
+   public function search()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $conditionArray = $_POST['condition'];
+
+      /**
+       * Code to convert form or querystring parameter into associative array format.
+       */
+      $chunks = array_chunk(preg_split('/(=|,)/', $conditionArray), 2);
+      $conditionArray = array_combine(array_column($chunks, 0), array_column($chunks, 1));
+
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*Where($conditionArray);
+   }
+
+   /**
+   * Method to display data from table with specified where and like clause.
+   */
+   public function searchLike()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $conditionArray = $_POST['condition'];
+      
+      /**
+       * Code to convert form or querystring parameter into associative array format.
+       */
+      $chunks = array_chunk(preg_split('/(=|,)/', $conditionArray), 2);
+      $conditionArray = array_combine(array_column($chunks, 0), array_column($chunks, 1));
+
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*WhereLike($conditionArray);
+   }
+
+   /**
+   * Method to display data from table with specified where and not like clause.
+   */
+   public function searchNLike()
+   {
+      /**
+       * Code to retrieve values from form or querystring.
+       */
+
+      $conditionArray = $_POST['condition'];
+      
+      /**
+       * Code to convert form or querystring parameter into associative array format.
+       */
+      $chunks = array_chunk(preg_split('/(=|,)/', $conditionArray), 2);
+      $conditionArray = array_combine(array_column($chunks, 0), array_column($chunks, 1));
+
+
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*WhereNLike($conditionArray);
+   }
+
+   /**
+   * Method to display data from table with group by functionality.
+   */
+   public function groupBy()
+   {
+        /**
+       * Code to retrieve values from form or querystring.
+       */
+
+       $fields = explode(',',$_POST['fields']);
+      
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*GroupBy($fields);
+   }
+
+   /**
+   * Method to display data from table with order by functionality.
+   */
+   public function orderBy()
+   {
+        /**
+       * Code to retrieve values from form or querystring.
+       */
+
+       $fields = explode(',',$_POST['fields']); $order = 'asc';
+
+      /**
+      *  Condition to check if querystring parameter order is empty or not.
+      *  if empty then keep value of order as asc otherwise set it to desc.
+      */
+       if($_POST['order'] != null)
+       {
+          $order = $_POST['order'];
+       }
+      
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*OrderBy($fields, $order);
+   }
+
+   /**
+   * Method to display distinct data from table.
+   */
+   public function distinct()
+   {
+      /**
+       * Code to call method from *ModelName* model.
+       */
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*Distinct();
+   }
+
+}
+
+?>
