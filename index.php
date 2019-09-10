@@ -4,7 +4,7 @@ require_once("databaseConfigure.php");
 require_once("modelGenerator.php");
 require_once("controllerGenerator.php");
 
-$obj = new databaseConfigure("localhost","root","","vnsgu");
+$obj = new databaseConfigure("localhost","root","","mydb");
 
 /**
  * Code to get all tables list from the specified database into the parameter.
