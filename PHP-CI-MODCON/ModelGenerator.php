@@ -66,19 +66,67 @@ class ModelGenerator
                         if($j != 1)
                         {
                             $insertParameter = $insertParameter."$".$fieldList[$j].", ";
-                            
-                            $insertArrayParameter = "'".$fieldList[$j]."'=>".$insertArrayParameter."$".$fieldList[$j].", ";
                         }
                     }
                     else
                     {
                         $insertParameter = $insertParameter."$".$fieldList[$j];
                         $updateParameter = $updateParameter."$".$fieldList[$j];
-                        
-                        $insertArrayParameter = $insertArrayParameter."'".$fieldList[$j]."'=>$".$fieldList[$j]."";
-                        $updateArrayParameter = $insertArrayParameter;
                     }
                 }
+
+                /**
+                 * Code to assign $insertParameter value to $tmpArrayHolder variable to
+                 * generate value for $insertArrayParameter and $updateParameter.
+                 * 
+                 * Used explode to convert string into array with comma(,) delimeter
+                 * so it can be used in for loop
+                 */
+                $tmpArrayHolder = explode(',',$insertParameter);
+
+                /**
+                 * For loop to generate parameter format for
+                 * $insertArrayParameter and $updateArrayParameter.
+                 */
+                for($k=0; $k< count($tmpArrayHolder); $k++)
+                {
+                    /**
+                     * Code to replace $ sign as its not needed while generating key in array format
+                     * for $insertArrayParameter and $updateArrayParameter.
+                     */
+                    $tmpFieldHolder = str_replace('$','',$tmpArrayHolder[$k]);
+
+                    /**
+                     * Code to check that if we reach at the last field of the array index
+                     * then no need to add comma(,) at the end otherwise we will keep
+                     * adding comma(,) at the end.
+                     */
+                    if($k != count($tmpArrayHolder)-1)
+                    {
+                        /**
+                         * Code to add comma(,).
+                         */
+                        $insertArrayParameter = $insertArrayParameter."'".$tmpFieldHolder."'=>".$tmpArrayHolder[$k].",";
+                    }
+                    else
+                    {
+                        /**
+                         * Code to not add comma(,).
+                         */
+                        $insertArrayParameter = $insertArrayParameter."'".$tmpFieldHolder."'=>".$tmpArrayHolder[$k];
+                    }
+                }
+
+                /**
+                 * Code to assign newly generated value from the for loop to the $insertArrayParameter
+                 * and $updateArrayParameter parameter so it can be used in parameter for the function
+                 * inside the model.
+                 * 
+                 * Code to remove extra space from string as it will generate error.
+                 */
+                $insertArrayParameter = str_replace(' ','',$insertArrayParameter);
+                $updateArrayParameter = $insertArrayParameter;
+                
                 /**
                  * Code to create file with file name as table to generate model name for file.
                  * ucfirst is used to capital the first character of the table name.
@@ -125,13 +173,13 @@ class ModelGenerator
                  */
                 fclose($file);
                 
+                
             }
             
             /**
              * Code to display content from ControllerGenerated directory
              */
             $this->directoryContent();
-            
         }
         else
         {
@@ -184,19 +232,66 @@ class ModelGenerator
                         if($j != 1)
                         {
                             $insertParameter = $insertParameter."$".$fieldList[$j].", ";
-                            
-                            $insertArrayParameter = "'".$fieldList[$j]."'=>".$insertArrayParameter."$".$fieldList[$j].", ";
                         }
                     }
                     else
                     {
                         $insertParameter = $insertParameter."$".$fieldList[$j];
                         $updateParameter = $updateParameter."$".$fieldList[$j];
-                        
-                        $insertArrayParameter = $insertArrayParameter."'".$fieldList[$j]."'=>$".$fieldList[$j]."";
-                        $updateArrayParameter = $insertArrayParameter;
                     }
                 }
+
+                /**
+                 * Code to assign $insertParameter value to $tmpArrayHolder variable to
+                 * generate value for $insertArrayParameter and $updateParameter.
+                 * 
+                 * Used explode to convert string into array with comma(,) delimeter
+                 * so it can be used in for loop
+                 */
+                $tmpArrayHolder = explode(',',$insertParameter);
+
+                /**
+                 * For loop to generate parameter format for
+                 * $insertArrayParameter and $updateArrayParameter.
+                 */
+                for($k=0; $k< count($tmpArrayHolder); $k++)
+                {
+                    /**
+                     * Code to replace $ sign as its not needed while generating key in array format
+                     * for $insertArrayParameter and $updateArrayParameter.
+                     */
+                    $tmpFieldHolder = str_replace('$','',$tmpArrayHolder[$k]);
+
+                    /**
+                     * Code to check that if we reach at the last field of the array index
+                     * then no need to add comma(,) at the end otherwise we will keep
+                     * adding comma(,) at the end.
+                     */
+                    if($k != count($tmpArrayHolder)-1)
+                    {
+                        /**
+                         * Code to add comma(,).
+                         */
+                        $insertArrayParameter = $insertArrayParameter."'".$tmpFieldHolder."'=>".$tmpArrayHolder[$k].",";
+                    }
+                    else
+                    {
+                        /**
+                         * Code to not add comma(,).
+                         */
+                        $insertArrayParameter = $insertArrayParameter."'".$tmpFieldHolder."'=>".$tmpArrayHolder[$k];
+                    }
+                }
+
+                /**
+                 * Code to assign newly generated value from the for loop to the $insertArrayParameter
+                 * and $updateArrayParameter parameter so it can be used in parameter for the function
+                 * inside the model.
+                 * 
+                 * Code to remove extra space from string as it will generate error.
+                 */
+                $insertArrayParameter = str_replace(' ','',$insertArrayParameter);
+                $updateArrayParameter = $insertArrayParameter; 
 
                 /**
                  * Code to create file with file name as table to generate model name for file.
@@ -249,7 +344,7 @@ class ModelGenerator
                 /**
                  * Code to display content from ControllerGenerated directory
                  */
-                $this->directoryContent();    
+                $this->directoryContent();
         }
         else
         {
