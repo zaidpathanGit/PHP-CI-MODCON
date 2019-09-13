@@ -19,8 +19,18 @@ class ModelGenerator
     /**
      * Function to generate controller for all the tables from the tableList specified in parameter
      */
-    function generateModel($tableList)
+    function generateModel($tableList, $directory)
     {
+        /**
+         * Code to fetch the directory where the files will be created.
+         * if user provides null as a parameter then default location is choosed.
+         */
+        
+        if($directory==null)
+        {
+            $directory = "./ModelGenerated/";
+        }
+
         /**
          * Code to check if connection is active or not.
          */
@@ -131,7 +141,7 @@ class ModelGenerator
                  * Code to create file with file name as table to generate model name for file.
                  * ucfirst is used to capital the first character of the table name.
                  */
-                $file = fopen("./ModelGenerated/".ucfirst($tableList[$i])."Model.php", "w");
+                $file = fopen($directory.ucfirst($tableList[$i])."Model.php", "w");
 
                 /**
                  * Code to copy the content from the ModelSample file file and write it into newly created file
@@ -177,9 +187,9 @@ class ModelGenerator
             }
             
             /**
-             * Code to display content from ControllerGenerated directory
+             * Code to display content from directory specified in the parameter
              */
-            $this->directoryContent();
+            $this->directoryContent($directory);
         }
         else
         {
@@ -190,8 +200,18 @@ class ModelGenerator
     /**
      * Function to generate controller for a particular tabel from the table name specified in parameter
      */
-    function generateSingleModel($tableName)
+    function generateSingleModel($tableName, $directory)
     {
+        /**
+         * Code to fetch the directory where the files will be created.
+         * if user provides null as a parameter then default location is choosed.
+         */
+        
+        if(directory==null)
+        {
+            $directory = "./ModelGenerated/";
+        }
+
         /**
          * Code to check if connection is active or not.
          */
@@ -297,7 +317,7 @@ class ModelGenerator
                  * Code to create file with file name as table to generate model name for file.
                  * ucfirst is used to capital the first character of the table name.
                  */
-                $file = fopen("./ModelGenerated/".ucfirst($tableName)."Model.php", "w");
+                $file = fopen($directory.ucfirst($tableName)."Model.php", "w");
 
                 /**
                  * Code to copy the content from the ModelSample file file and write it into newly created file
@@ -342,9 +362,9 @@ class ModelGenerator
                 fclose($file);
             
                 /**
-                 * Code to display content from ControllerGenerated directory
+                 * Code to display content from directory specified in the parameter
                  */
-                $this->directoryContent();
+                $this->directoryContent($directory);
         }
         else
         {
@@ -352,17 +372,20 @@ class ModelGenerator
         }
     }
 
-    public function directoryContent()
+    public function directoryContent($directory)
     {
         /**
-         * Code to display content from ControllerGenerated directory
+         * Code to display content from directory specified in the parameter
          */
-        echo "<hr>The followin files are created in ModelGenerated folder : (Click to download)<hr>";
-        $files = scandir("./ModelGenerated");
+        echo "<hr>The following model files are created in <b>".$directory."</b> folder :<hr>";
+        $files = scandir($directory);
         
         foreach($files as $f)
         {
-            echo "<a href='./ModelGenerated/".$f."' download> ".$f." </a> <br>";
+            if(preg_match('/\Model.php\b/',$f))
+            {
+                echo "<a href='".$directory.$f."' download> ".$f." </a> <br>";
+            }
         }
     }
 }

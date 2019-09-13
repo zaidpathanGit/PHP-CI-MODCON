@@ -4,12 +4,15 @@ require_once("databaseConfigure.php");
 require_once("modelGenerator.php");
 require_once("controllerGenerator.php");
 
-$obj = new databaseConfigure("localhost","root","","vnsgu");
+$obj = new databaseConfigure("localhost","root","","shoppingdb");
 
 /**
  * Code to get all tables list from the specified database into the parameter.
  */
 $tableList = $obj->getAllTables();
+
+echo "<hr>The following tables are available in your database.<hr>";
+var_dump($tableList);
 
 /**
  * Code to get fields list from the specified table into the parameter.
@@ -24,8 +27,8 @@ $obj1 = new ControllerGenerator();
 /**
  * Call the methods to generate single model or for all the tables available inside your database.
  */
-//$obj1->generateSingleController($tableList[1]);
-//$obj1->generateController($tableList);
+//$obj1->generateSingleController($tableList[1], "C:\\");
+//$obj1->generateController($tableList, "C:\\");
 
 /**
  * Make an object of ModelGenerator class to access its methods.
@@ -35,7 +38,7 @@ $obj2 = new ModelGenerator();
 /**
  * Call the methods to generate single controller. or for all the tables available inside your database.
  */
-//$obj2->generateSingleModel($tableList[1]);
-//$obj2->generateModel($tableList);
+//$obj2->generateSingleModel($tableList[1], "C:\\");
+//$obj2->generateModel($tableList, "C:\\");
 
 ?>
