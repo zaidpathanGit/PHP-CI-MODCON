@@ -41,7 +41,7 @@ student(studentname, studentid, deptid) //Wrong
 
 ## How to use ??
 
-Step 1. Download the repository and unzip or extract the downloaded file and place it inside the `wamp` or `xamp` / `www` folder.
+Step 1. Download the repository (Prefer branch 2.0 for latest update) and unzip or extract the downloaded file and place it inside the `wamp` or `xamp` / `www` folder.
 
 Step 2. Open `index.php` file inside `PHP-CI-MODCON` folder and have a look onto the configuration table for more steps according to your requirement or for abstract details have a look onto the following code.
 
