@@ -27,8 +27,8 @@ $obj1 = new ControllerGenerator();
 /**
  * Call the methods to generate single model or for all the tables available inside your database.
  */
-//$obj1->generateSingleController($tableList[1], "C:\\");
-//$obj1->generateController($tableList, "C:\\");
+//$obj1->generateSingleController($tableList[1], null); //pass null parameter for default location.
+//$obj1->generateController($tableList, "C:\\wamp64\\www\\yourProject\\application\\controllers\\");
 
 /**
  * Make an object of ModelGenerator class to access its methods.
@@ -38,7 +38,7 @@ $obj2 = new ModelGenerator();
 /**
  * Call the methods to generate single controller. or for all the tables available inside your database.
  */
-//$obj2->generateSingleModel($tableList[1], "C:\\");
-//$obj2->generateModel($tableList, "C:\\");
+//$obj2->generateSingleModel($tableList[1], null); //pass null parameter for default location.
+//$obj2->generateModel($tableList, "C:\\wamp64\\www\\yourProject\\application\\models\\");
 
 ?>
