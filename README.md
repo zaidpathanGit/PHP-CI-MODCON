@@ -75,7 +75,7 @@ $fieldList = $obj->getTableFields($tableList[1]);
 $obj1 = new ControllerGenerator();
 
 /**
- * Call the methods to generate single model or for all the tables available inside your database.
+ * Call the methods to generate single controller or for all the tables available inside your database.
  */
 //$obj1->generateSingleController($tableList[1], null); //pass null parameter for default location.
 //$obj1->generateController($tableList, "C:\\wamp64\\www\\yourProject\\application\\controllers\\");
@@ -86,7 +86,7 @@ $obj1 = new ControllerGenerator();
 $obj2 = new ModelGenerator();
 
 /**
- * Call the methods to generate single controller. or for all the tables available inside your database.
+ * Call the methods to generate single model or for all the tables available inside your database.
  */
 //$obj2->generateSingleModel($tableList[1], null); //pass null parameter for default location.
 //$obj2->generateModel($tableList, "C:\\wamp64\\www\\yourProject\\application\\models\\");
