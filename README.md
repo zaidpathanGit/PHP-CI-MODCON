@@ -99,7 +99,7 @@ Step 3. Run the `localhost` server and run the `PHP-CI-MODCON` project.
 
 Step 4. By default `index.php` will be executed and it will generate the `controller[s]` inside the `ControllerGenerated` folder or `model[s]` inside `ModelGenerated` folder according to your function calls and database tables available.
 
-Step 5. Once the execution is completed it will display the directory status about whatever the changes are occured and will display the newly created files onto your browser which is a hyperlink and can be downloaded by clicking on it.
+Step 5. Once the execution is completed it will display the directory status about whatever the changes are occured and will display the newly created files onto your browser.
 
 Step 6. Open your CodeIgnitor project and navigate to the `application` folder.
 
