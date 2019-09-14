@@ -212,9 +212,9 @@ same as table fields name.-->
 </form>
 
 <!-- Form for search not like operation -->
-<form method="POST" action="Product/searchLike">
+<form method="POST" action="Product/searchNLike">
     <input type="text" name="condition">
-    <button type="submit">SearchLike</button>
+    <button type="submit">SearchNLike</button>
 </form>
 
 <!-- Form for groupby operation -->
