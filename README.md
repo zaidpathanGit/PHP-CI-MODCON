@@ -81,7 +81,7 @@ $fieldList = $obj->getTableFields($tableList[1]); //Table name on $tableList[1] 
 $obj1 = new controllerGenerator();
 
 /**
- * Call the methods to generate single model or to generate 
+ * Call the methods to generate single controller or to generate 
  * models for all the tables available inside your database.
  */
 $obj1->generateSingleController($tableName); //Pass your database table name as parameter.
@@ -93,7 +93,7 @@ $obj1->generateController($tableList); //Pass $tableList as parameter.
 $obj2 = new ModelGenerator();
 
 /**
- * Call the methods to generate single controller or to generate controller 
+ * Call the methods to generate single model or to generate controller 
  * for all the tables available inside your database.
  */
 
