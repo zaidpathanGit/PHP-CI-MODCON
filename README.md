@@ -124,7 +124,7 @@ of the controllers  have a look onto the following table.
 |localhost://projectName/controllerName/min | Field name via html form | POST | field=fieldname | Table records in json | JSON |
 |localhost://projectName/controllerName/avg | Field name via html form | POST | field=fieldname | Table records in json | JSON |
 |localhost://projectName/controllerName/sum | Field name via html form | POST | field=fieldname | Table records in json | JSON |
-|localhost://projectName/controllerName/search | Condition array via form (use [] after form name attribute) | POST | condition?field1=value, field2=value | Table records in json | JSON |
+|localhost://projectName/controllerName/search | Field name and value in following format via form | POST | condition?field1=value, field2=value | Table records in json | JSON |
 |localhost://projectName/controllerName/searchLike | Field name and value in the following format via form | POST | condition?field1=value,field2=value | Table records in json | JSON |
 |localhost://projectName/controllerName/searchNLike  | Field name and value in the following format via form: condition?field1=value, field2=value | POST | condition?field1=value,field2=value | Table records in json | JSON |
 |localhost://projectName/controllerName/groupBy | Field via form | POST | field=field1 | Table records in json | JSON |
