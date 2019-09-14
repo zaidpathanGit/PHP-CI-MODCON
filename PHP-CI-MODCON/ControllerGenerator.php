@@ -26,7 +26,7 @@ class ControllerGenerator
          * if user provides null as a parameter then default location is choosed.
          */
         
-        if(directory==null)
+        if($directory==null)
         {
             $directory = "./ControllerGenerated/";
         }
@@ -163,7 +163,7 @@ class ControllerGenerator
          * if user provides null as a parameter then default location is choosed.
          */
         
-        if(directory==null)
+        if($directory==null)
         {
             $directory = "./ControllerGenerated/";
         }
