@@ -207,7 +207,7 @@ class ModelGenerator
          * if user provides null as a parameter then default location is choosed.
          */
         
-        if(directory==null)
+        if($directory==null)
         {
             $directory = "./ModelGenerated/";
         }
