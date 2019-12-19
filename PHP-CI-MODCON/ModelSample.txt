@@ -62,6 +62,11 @@ class *ModelName* extends CI_Model
     */
    public function showAllDataFrom*MethodName*()
    {
+        /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
        /**
         * Code to execute DB builder query and return the output into json format.
         */
@@ -75,6 +80,11 @@ class *ModelName* extends CI_Model
    */
    public function showAllDataFrom*MethodName*Select($selectionArray)
    {
+        /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
         /**
         * Code to execute DB builder query and return the output into json format.
         */
@@ -90,6 +100,11 @@ class *ModelName* extends CI_Model
    public function showAllDataFrom*MethodName*Limit($start, $end)
    {
         /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
+        /**
         * Code to execute DB builder query and return the output into json format.
         */
         $response = Array('response'=>$this->db->get('*QueryName*',$end, $start)->result_array()
@@ -102,6 +117,11 @@ class *ModelName* extends CI_Model
    */
    public function showAllDataFrom*MethodName*SelectLimit($selectionArray, $start, $end)
    {
+        /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
         /**
         * Code to execute DB builder query and return the output into json format.
         */
@@ -117,6 +137,11 @@ class *ModelName* extends CI_Model
    public function showAllDataFrom*MethodName*Max($field)
    {
         /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
+        /**
         * Code to execute DB builder query and return the output into json format.
         */
         $this->db->select_max($field);
@@ -130,6 +155,11 @@ class *ModelName* extends CI_Model
    */
    public function showAllDataFrom*MethodName*Min($field)
    {
+        /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
         /**
         * Code to execute DB builder query and return the output into json format.
         */
@@ -145,6 +175,11 @@ class *ModelName* extends CI_Model
    public function showAllDataFrom*MethodName*Avg($field)
    {
         /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
+        /**
         * Code to execute DB builder query and return the output into json format.
         */
         $this->db->select_avg($field);
@@ -158,6 +193,11 @@ class *ModelName* extends CI_Model
    */
    public function showAllDataFrom*MethodName*Sum($field)
    {
+        /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
         /**
         * Code to execute DB builder query and return the output into json format.
         */
@@ -173,6 +213,11 @@ class *ModelName* extends CI_Model
    public function showAllDataFrom*MethodName*Where($conditionArray)
    {
         /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
+        /**
         * Code to execute DB builder query and return the output into json format.
         */
         $this->db->where($conditionArray);
@@ -186,6 +231,11 @@ class *ModelName* extends CI_Model
    */
    public function showAllDataFrom*MethodName*WhereLike($conditionArray)
    {
+        /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
         /**
         * Code to execute DB builder query and return the output into json format.
         */
@@ -201,6 +251,11 @@ class *ModelName* extends CI_Model
    public function showAllDataFrom*MethodName*WhereNLike($conditionArray)
    {
         /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
+        /**
         * Code to execute DB builder query and return the output into json format.
         */
         $this->db->not_like($conditionArray);
@@ -214,6 +269,11 @@ class *ModelName* extends CI_Model
    */
    public function showAllDataFrom*MethodName*GroupBy($fields)
    {
+        /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
         /**
         * Code to execute DB builder query and return the output into json format.
         */
@@ -229,6 +289,11 @@ class *ModelName* extends CI_Model
    public function showAllDataFrom*MethodName*OrderBy($fields, $order)
    {
         /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
+        /**
         * Code to execute DB builder query and return the output into json format.
         */
         $this->db->order_by($fields, $order);
@@ -242,6 +307,11 @@ class *ModelName* extends CI_Model
    */
    public function showAllDataFrom*MethodName*Distinct()
    {
+        /**
+        * Code to maintain database join
+        */
+        //No foreign key found
+
         /**
         * Code to execute DB builder query and return the output into json format.
         */

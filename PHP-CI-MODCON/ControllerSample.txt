@@ -105,7 +105,7 @@ class *ControllerName* extends CI_Controller
        * Code to retrieve values from form or querystring.
        */
 
-      $fields = explode(',',$_POST['fields']);
+      $fields = $_POST['fields'];
 
       /**
        * Code to call method from *ModelName* model.
@@ -122,7 +122,7 @@ class *ControllerName* extends CI_Controller
        * Code to retrieve values from form or querystring.
        */
 
-      $fields = explode(',',$_POST['fields']); $start = $_POST['start']; $end = $_POST['end'];
+      $fields = $_POST['fields']; $start = $_POST['start']; $end = $_POST['end'];
 
       /**
        * Code to call method from *ModelName* model.
@@ -215,7 +215,6 @@ class *ControllerName* extends CI_Controller
       $chunks = array_chunk(preg_split('/(=|,)/', $conditionArray), 2);
       $conditionArray = array_combine(array_column($chunks, 0), array_column($chunks, 1));
 
-
       /**
        * Code to call method from *ModelName* model.
        */
@@ -232,14 +231,13 @@ class *ControllerName* extends CI_Controller
        */
 
       $conditionArray = $_POST['condition'];
-      
+
       /**
        * Code to convert form or querystring parameter into associative array format.
        */
       $chunks = array_chunk(preg_split('/(=|,)/', $conditionArray), 2);
       $conditionArray = array_combine(array_column($chunks, 0), array_column($chunks, 1));
-
-
+      
       /**
        * Code to call method from *ModelName* model.
        */
@@ -256,14 +254,13 @@ class *ControllerName* extends CI_Controller
        */
 
       $conditionArray = $_POST['condition'];
-      
+
       /**
        * Code to convert form or querystring parameter into associative array format.
        */
       $chunks = array_chunk(preg_split('/(=|,)/', $conditionArray), 2);
       $conditionArray = array_combine(array_column($chunks, 0), array_column($chunks, 1));
-
-
+      
       /**
        * Code to call method from *ModelName* model.
        */
@@ -279,12 +276,12 @@ class *ControllerName* extends CI_Controller
        * Code to retrieve values from form or querystring.
        */
 
-       $fields = explode(',',$_POST['fields']);
+       $field = $_POST['field'];
       
       /**
        * Code to call method from *ModelName* model.
        */
-      echo $this->*ModelName*->showAllDataFrom*ControllerName*GroupBy($fields);
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*GroupBy($field);
    }
 
    /**
@@ -296,7 +293,7 @@ class *ControllerName* extends CI_Controller
        * Code to retrieve values from form or querystring.
        */
 
-       $fields = explode(',',$_POST['fields']); $order = 'asc';
+       $field = $_POST['field']; $order = 'asc';
 
       /**
       *  Condition to check if querystring parameter order is empty or not.
@@ -310,7 +307,7 @@ class *ControllerName* extends CI_Controller
       /**
        * Code to call method from *ModelName* model.
        */
-      echo $this->*ModelName*->showAllDataFrom*ControllerName*OrderBy($fields, $order);
+      echo $this->*ModelName*->showAllDataFrom*ControllerName*OrderBy($field, $order);
    }
 
    /**

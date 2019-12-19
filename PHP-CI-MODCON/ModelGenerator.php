@@ -19,8 +19,18 @@ class ModelGenerator
     /**
      * Function to generate controller for all the tables from the tableList specified in parameter
      */
-    function generateModel($tableList)
+    function generateModel($tableList, $directory)
     {
+        /**
+         * Code to fetch the directory where the files will be created.
+         * if user provides null as a parameter then default location is choosed.
+         */
+        
+        if($directory==null)
+        {
+            $directory = "./ModelGenerated/";
+        }
+
         /**
          * Code to check if connection is active or not.
          */
@@ -47,6 +57,15 @@ class ModelGenerator
                  */
                 $insertParameter = "";  $updateParameter = "";
                 $insertArrayParameter = "";  $updateArrayParameter = "";
+                $joinParameter = "//No foreign key found";
+
+                /**
+                 * Suppose if we are having two table 1. state (sid, sname) 2. city(cid, cname, fk_state_sid) and if we want to join
+                 * city table foreign key to state table foreign key then the following line will be look like as follow in cityModel.php
+                 *
+                 * $JoinParameterQuery = "$"."this->db->join('state','state.sid = city.fk_state_sid');
+                 */
+                $JoinParameterQuery = "$"."this->db->join('TableToJoin','TableToJoin.TableToJoinId = TableFromJoin.TableFromJoinId');";
                 
                 for($j=1; $j < count($fieldList); $j++)
                 {
@@ -73,7 +92,50 @@ class ModelGenerator
                         $insertParameter = $insertParameter."$".$fieldList[$j];
                         $updateParameter = $updateParameter."$".$fieldList[$j];
                     }
+
+                    /**
+                     * Code to generate join statements for database table. Condition to check if field
+                     * contains fk as a prefix then only execute the code to generate join statements.
+                     * 
+                     * It will returns true if in any of the field fk is found as a prefix and the condition
+                     * is executed for every field of the database.
+                     */
+                    if(preg_match("/fk/", $fieldList[$j])) 
+                    {
+                        /**
+                         * Code to set null to the $joinParameter if it contains //No foreign key found value
+                         * otherwise it will also print //No foreign key found msg with the join parameter
+                         */
+                        if($joinParameter == "//No foreign key found")
+                        {
+                            $joinParameter = null;
+                        }
+
+
+                        /**
+                         * Code to split field with _ (underscore) delimeter and get the values into array in 
+                         * which array contains the following values into different indexes :
+                         * [0] = fk, [1] = TableToJoin, [2] = TableToJoinId
+                         * 
+                         * e.g
+                         * If the field name is fk_state_sid the array will be converted to the following :
+                         * [0] = fk, [1] = state, [2] = sid.
+                         */
+                        $fieldArrayHolder = explode('_',$fieldList[$j]);
+
+                        /**
+                         * Code to generate join statement
+                         */
+                        $joinParameter .= str_replace('TableToJoin', $fieldArrayHolder[1],
+                                          str_replace('TableToJoinId', $fieldArrayHolder[2], 
+                                          str_replace('TableFromJoin', $tableList[$i], 
+                                          str_replace('TableFromJoinId', $fieldList[$j], $JoinParameterQuery
+
+                                        ))))."
+        "; //Add newline so multiple join statments are appear into new lines
+                    }
                 }
+                
 
                 /**
                  * Code to assign $insertParameter value to $tmpArrayHolder variable to
@@ -131,7 +193,7 @@ class ModelGenerator
                  * Code to create file with file name as table to generate model name for file.
                  * ucfirst is used to capital the first character of the table name.
                  */
-                $file = fopen("./ModelGenerated/".ucfirst($tableList[$i])."Model.php", "w");
+                $file = fopen($directory.ucfirst($tableList[$i])."Model.php", "w");
 
                 /**
                  * Code to copy the content from the ModelSample file file and write it into newly created file
@@ -158,9 +220,10 @@ class ModelGenerator
                                   str_replace("*DeleteParameter*", "$".$fieldList[1]."",
                                   str_replace("*InsertArrayParameter*", $insertArrayParameter.")",
                                   str_replace("*UpdateArrayParameter*", $updateArrayParameter.")",
+                                  str_replace("//No foreign key found", $joinParameter,
 
                                   fgets($myfile)))
-                    ))))))));
+                    )))))))));
                 }
 
                 /**
@@ -177,9 +240,9 @@ class ModelGenerator
             }
             
             /**
-             * Code to display content from ControllerGenerated directory
+             * Code to display content from directory specified in the parameter
              */
-            $this->directoryContent();
+            $this->directoryContent($directory);
         }
         else
         {
@@ -190,8 +253,18 @@ class ModelGenerator
     /**
      * Function to generate controller for a particular tabel from the table name specified in parameter
      */
-    function generateSingleModel($tableName)
+    function generateSingleModel($tableName, $directory)
     {
+        /**
+         * Code to fetch the directory where the files will be created.
+         * if user provides null as a parameter then default location is choosed.
+         */
+        
+        if($directory==null)
+        {
+            $directory = "./ModelGenerated/";
+        }
+
         /**
          * Code to check if connection is active or not.
          */
@@ -213,6 +286,15 @@ class ModelGenerator
                  */
                 $insertParameter = "";  $updateParameter = "";
                 $insertArrayParameter = "";  $updateArrayParameter = "";
+                $joinParameter = "//No foreign key found";
+
+                /**
+                 * Suppose if we are having two table 1. state (sid, sname) 2. city(cid, cname, fk_state_sid) and if we want to join
+                 * city table foreign key to state table foreign key then the following line will be look like as follow in cityModel.php
+                 *
+                 * $JoinParameterQuery = "$"."this->db->join('state','state.sid = city.fk_state_sid');
+                 */
+                $JoinParameterQuery = "$"."this->db->join('TableToJoin','TableToJoin.TableToJoinId = TableFromJoin.TableFromJoinId');";
                 
                 for($j=1; $j < count($fieldList); $j++)
                 {
@@ -238,6 +320,48 @@ class ModelGenerator
                     {
                         $insertParameter = $insertParameter."$".$fieldList[$j];
                         $updateParameter = $updateParameter."$".$fieldList[$j];
+                    }
+
+                    /**
+                     * Code to generate join statements for database table. Condition to check if field
+                     * contains fk as a prefix then only execute the code to generate join statements.
+                     * 
+                     * It will returns true if in any of the field fk is found as a prefix and the condition
+                     * is executed for every field of the database.
+                     */
+                    if(preg_match("/fk/", $fieldList[$j])) 
+                    {
+                        /**
+                         * Code to set null to the $joinParameter if it contains //No foreign key found value
+                         * otherwise it will also print //No foreign key found msg with the join parameter
+                         */
+                        if($joinParameter == "//No foreign key found")
+                        {
+                            $joinParameter = null;
+                        }
+
+
+                        /**
+                         * Code to split field with _ (underscore) delimeter and get the values into array in 
+                         * which array contains the following values into different indexes :
+                         * [0] = fk, [1] = TableToJoin, [2] = TableToJoinId
+                         * 
+                         * e.g
+                         * If the field name is fk_state_sid the array will be converted to the following :
+                         * [0] = fk, [1] = state, [2] = sid.
+                         */
+                        $fieldArrayHolder = explode('_',$fieldList[$j]);
+
+                        /**
+                         * Code to generate join statement
+                         */
+                        $joinParameter .= str_replace('TableToJoin', $fieldArrayHolder[1],
+                                          str_replace('TableToJoinId', $fieldArrayHolder[2], 
+                                          str_replace('TableFromJoin', $tableName, 
+                                          str_replace('TableFromJoinId', $fieldList[$j], $JoinParameterQuery
+
+                                        ))))."
+        "; //Add newline so multiple join statments are appear into new lines
                     }
                 }
 
@@ -297,7 +421,7 @@ class ModelGenerator
                  * Code to create file with file name as table to generate model name for file.
                  * ucfirst is used to capital the first character of the table name.
                  */
-                $file = fopen("./ModelGenerated/".ucfirst($tableName)."Model.php", "w");
+                $file = fopen($directory.ucfirst($tableName)."Model.php", "w");
 
                 /**
                  * Code to copy the content from the ModelSample file file and write it into newly created file
@@ -324,9 +448,10 @@ class ModelGenerator
                                   str_replace("*DeleteParameter*", "$".$fieldList[1]."",
                                   str_replace("*InsertArrayParameter*", $insertArrayParameter.")",
                                   str_replace("*UpdateArrayParameter*", $updateArrayParameter.")",
+                                  str_replace("//No foreign key found", $joinParameter."",
 
                                   fgets($myfile)))
-                    ))))))));
+                    )))))))));
                 }
 
                 /**
@@ -342,9 +467,9 @@ class ModelGenerator
                 fclose($file);
             
                 /**
-                 * Code to display content from ControllerGenerated directory
+                 * Code to display content from directory specified in the parameter
                  */
-                $this->directoryContent();
+                $this->directoryContent($directory);
         }
         else
         {
@@ -352,17 +477,20 @@ class ModelGenerator
         }
     }
 
-    public function directoryContent()
+    public function directoryContent($directory)
     {
         /**
-         * Code to display content from ControllerGenerated directory
+         * Code to display content from directory specified in the parameter
          */
-        echo "<hr>The followin files are created in ModelGenerated folder : (Click to download)<hr>";
-        $files = scandir("./ModelGenerated");
+        echo "<hr>The following model files are created in <b>".$directory."</b> folder :<hr>";
+        $files = scandir($directory);
         
         foreach($files as $f)
         {
-            echo "<a href='./ModelGenerated/".$f."' download> ".$f." </a> <br>";
+            if(preg_match('/\Model.php\b/',$f))
+            {
+                echo "<a href='".$directory.$f."' download> ".$f." </a> <br>";
+            }
         }
     }
 }

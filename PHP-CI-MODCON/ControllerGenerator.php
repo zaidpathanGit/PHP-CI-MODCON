@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 
 /**
  * Code to include databaseConfigure file to check database connection status
@@ -19,8 +19,18 @@ class ControllerGenerator
     /**
      * Function to generate controller for all the tables from the tableList specified in parameter
      */
-    function generateController($tableList)
+    function generateController($tableList, $directory)
     {
+        /**
+         * Code to fetch the directory where the files will be created.
+         * if user provides null as a parameter then default location is choosed.
+         */
+        
+        if($directory==null)
+        {
+            $directory = "./ControllerGenerated/";
+        }
+
         /**
          * Code to check if connection is active or not.
          */
@@ -47,11 +57,6 @@ class ControllerGenerator
                  */
                 $insertParameter = "";  $updateParameter = "";
                 $insertPostParameter = "";  $updatePostParameter = "";
-                
-                /**
-                 * Code to convert fieldList array to parameter format string
-                 */
-                $insertParameter = "";  $updateParameter = "";
                 
                 for($j=1; $j < count($fieldList); $j++)
                 {
@@ -93,7 +98,7 @@ class ControllerGenerator
                  * Code to create file with file name as table to generate model name for file.
                  * ucfirst is used to capital the first character of the table name.
                  */
-                $file = fopen("./ControllerGenerated/".ucfirst($tableList[$i]).".php", "w");
+                $file = fopen($directory.ucfirst($tableList[$i]).".php", "w");
 
                 /**
                  * Code to copy the content from the ModelSample file file and write it into newly created file
@@ -138,9 +143,9 @@ class ControllerGenerator
             }
 
             /**
-             * Code to display content from ControllerGenerated directory
+             * Code to display content from directory specified in the parameter
              */
-            $this->directoryContent();
+            $this->directoryContent($directory);
         }
         else
         {
@@ -151,8 +156,18 @@ class ControllerGenerator
     /**
      * Function to generate controller for a particular tabel from the table name specified in parameter
      */
-    function generateSingleController($tableName)
-    {
+    function generateSingleController($tableName, $directory)
+    {   
+        /**
+         * Code to fetch the directory where the files will be created.
+         * if user provides null as a parameter then default location is choosed.
+         */
+        
+        if($directory==null)
+        {
+            $directory = "./ControllerGenerated/";
+        }
+
         /**
          * Code to check if connection is active or not.
          */
@@ -213,7 +228,7 @@ class ControllerGenerator
                  * Code to create file with file name as table to generate model name for file.
                  * ucfirst is used to capital the first character of the table name.
                  */
-                $file = fopen("./ControllerGenerated/".ucfirst($tableName).".php", "w");
+                $file = fopen($directory.ucfirst($tableName).".php", "w");
 
                 /**
                  * Code to copy the content from the ModelSample file file and write it into newly created file
@@ -257,9 +272,9 @@ class ControllerGenerator
                 fclose($file);
 
             /**
-             * Code to display content from ControllerGenerated directory
+             * Code to display content from directory specified in the parameter
              */
-            $this->directoryContent();
+            $this->directoryContent($directory);
         }
         else
         {
@@ -267,17 +282,20 @@ class ControllerGenerator
         }
     }
 
-    public function directoryContent()
+    public function directoryContent($directory)
     {
         /**
-         * Code to display content from ControllerGenerated directory
+         * Code to display content from directory specified in the parameter
          */
-        echo "<hr>The followin files are created in ControllerGenerated folder : (Click to download)<hr>";
-        $files = scandir("./ControllerGenerated");
+        echo "<hr>The following controller files are created in <b>".$directory."</b> folder :<hr>";
+        $files = scandir($directory);
         
         foreach($files as $f)
         {
-            echo "<a href='./ControllerGenerated/".$f."' download> ".$f." </a> <br>";
+            if(!preg_match('/\Model\b/',$f) && preg_match('/\.php\b/',$f))
+            {
+                echo "<a href='".$directory.$f."' download> ".$f." </a> <br>";
+            }
         }
     }
 }

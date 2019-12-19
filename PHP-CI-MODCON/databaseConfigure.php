@@ -35,6 +35,45 @@ class databaseConfigure
     }
     
     /**
+     * Function to fetch and display all the database from specified connection
+     */
+    function getAllDatabases()
+    {
+        /**
+         * Code to check if connection is active or not.
+         */
+        if($GLOBALS['connection'])
+        {
+            /**
+             * Code to fetch all the databases from connection
+             */            
+            $result = mysqli_query($GLOBALS['connection'],"show DATABASES");
+
+            /**
+             * Code to fetch all the databases and add to the array
+             */
+            $databaseList = "DatabaseList";
+            while($databases = mysqli_fetch_row($result))
+            {
+                /**
+                 * Code to concatinate the databases names one by one with comma as a delimeter
+                 */
+                $databaseList = $databaseList.",".$databases[0];
+            }
+
+            /**
+             * Code to convert string to array by using explode function
+             */
+            $databaseList = explode(',',$databaseList);
+            return $databaseList;
+        }
+        else
+        {
+            exit("Execution is stopped due to the database connection error.!");
+        }
+    }
+
+    /**
      * Function to fetch and display all the tables from specified database
      */
     function getAllTables()
