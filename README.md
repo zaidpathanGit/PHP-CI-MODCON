@@ -1,7 +1,6 @@
 # PHP-CI-MODCON
 
-[![GitHub Release](https://github-basic-badges.herokuapp.com/license/zaidpathanGit/PHP-CI-MODCON.svg)]()
-[![GitHub Issues Open](https://github-basic-badges.herokuapp.com/issues/zaidpathanGit/PHP-CI-MODCON.svg)]()
+* Prefer Version 2.0 Branch for latest code updates or [Click me for Version 2.0 Branch](https://github.com/zaidpathanGit/PHP-CI-MODCON/blob/Version-2.0/README.md)
 
 * The PHP is widely used for web development and it also supports some popular frameworks which helps developers to boost the development speed. People who works with [PHP Codeignitor](codeigniter.com/) already knows that the CI framework requires to generate controllers and models manually. So it's a time consuming process to create controllers and models again and again while in development phase.
 
