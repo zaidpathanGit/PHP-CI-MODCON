@@ -2,8 +2,11 @@
 
 ## What's New ??
 
-* Now you can generate files into custom paths.
-* More stable than before and fixed minor bugs.
+* Bugs are fixed and performance is increased.
+* Allow to choose custom directory to generate models and controllers.
+* Displays directory content in more proper manners.
+* URL patterns are changed to make working easier.
+* Readme file is updated with demo of the url patterns.
 
 ## Introduction
 
