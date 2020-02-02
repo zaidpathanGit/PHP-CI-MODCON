@@ -1,4 +1,17 @@
 <?php
+   /**
+    * Code to include file for API authentication.
+   */
+   require_once('auth.php');
+
+   /**
+    * Code to store auth class object into global variable so it can be available everywhere
+    * and can be used without creating object every time we need the auth class methods.
+    */
+   $GLOBALS['auth'] = new auth();
+?>
+
+<?php
 /**
  * Code to generate class.
  */
@@ -34,6 +47,11 @@ class *ControllerName* extends CI_Controller
    public function insert()
    {  
       /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -50,6 +68,11 @@ class *ControllerName* extends CI_Controller
     */
    public function update()
    {
+      /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
       /**
        * Code to retrieve values from form or querystring.
        */
@@ -68,6 +91,11 @@ class *ControllerName* extends CI_Controller
    public function delete()
    {
       /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -84,6 +112,11 @@ class *ControllerName* extends CI_Controller
    */
    public function limit()
    {
+      /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
       /**
        * Code to retrieve values from form or querystring.
        */
@@ -102,6 +135,11 @@ class *ControllerName* extends CI_Controller
    public function select()
    {
       /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -118,6 +156,11 @@ class *ControllerName* extends CI_Controller
    */
    public function selectLimit()
    {
+      /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
       /**
        * Code to retrieve values from form or querystring.
        */
@@ -136,6 +179,11 @@ class *ControllerName* extends CI_Controller
    public function max()
    {
       /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -152,6 +200,11 @@ class *ControllerName* extends CI_Controller
    */
    public function min()
    {
+      /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
       /**
        * Code to retrieve values from form or querystring.
        */
@@ -170,6 +223,11 @@ class *ControllerName* extends CI_Controller
    public function avg()
    {
       /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -187,6 +245,11 @@ class *ControllerName* extends CI_Controller
    public function sum()
    {
       /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -203,6 +266,11 @@ class *ControllerName* extends CI_Controller
    */
    public function search()
    {
+      /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
       /**
        * Code to retrieve values from form or querystring.
        */
@@ -227,6 +295,11 @@ class *ControllerName* extends CI_Controller
    public function searchLike()
    {
       /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -250,6 +323,11 @@ class *ControllerName* extends CI_Controller
    public function searchNLike()
    {
       /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -272,7 +350,12 @@ class *ControllerName* extends CI_Controller
    */
    public function groupBy()
    {
-        /**
+      /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
@@ -289,16 +372,22 @@ class *ControllerName* extends CI_Controller
    */
    public function orderBy()
    {
-        /**
+      /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
+      /**
        * Code to retrieve values from form or querystring.
        */
 
        $field = $_POST['field']; $order = 'asc';
 
       /**
-      *  Condition to check if querystring parameter order is empty or not.
-      *  if empty then keep value of order as asc otherwise set it to desc.
-      */
+       *  Condition to check if querystring parameter order is empty or not.
+       *  if empty then keep value of order as asc otherwise set it to desc.
+       */
+       
        if($_POST['order'] != null)
        {
           $order = $_POST['order'];
@@ -315,6 +404,11 @@ class *ControllerName* extends CI_Controller
    */
    public function distinct()
    {
+      /**
+       * Calling function for API authentication.
+       */
+       $GLOBALS['auth']->authAPI();
+
       /**
        * Code to call method from *ModelName* model.
        */
