@@ -1,4 +1,6 @@
 <?php
+   error_reporting(0);
+
    /**
     * Code to include file for API authentication.
    */
