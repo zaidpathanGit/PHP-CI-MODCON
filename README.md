@@ -2,6 +2,7 @@
 
 ## What's New ??
 
+* API authentication is added.
 * Now supports GUI interface to easily perform your task.
 * Automatically generates foreign key constraints and designs patterns for join statements.
 * More stable than before and fixed minor bugs.
@@ -82,7 +83,7 @@ Step 5. Once the execution is completed it will display the directory status abo
 
 Step 6. Open your CodeIgnitor project and navigate to the `application` folder.
 
-Step 7. Copy the files from `ControllerGenerated` folder and paste it into the `application\controller` folder. Now copy the corresponding models of the controllers from `ModelGenerated` folder and paste it into `application\models` folder.
+Step 7. Copy the files from `ControllerGenerated` folder and paste it into the `application\controller` folder. Also copy `auth.php` and paste it into `application\controller` folder. Now copy the corresponding models of the controllers from `ModelGenerated` folder and paste it into `application\models` folder.
 
 > Note: It may possible that you have only generated models or only controllers 
 so in that case you can skip some instructions from step 7.
